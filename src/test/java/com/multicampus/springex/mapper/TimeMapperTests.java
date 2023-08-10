@@ -28,6 +28,8 @@ public class TimeMapperTests {
         log.info(timeMapper2.getNow());
 
     }
+
+
 }
 
 
