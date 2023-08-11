@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -64,7 +65,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">Writer</span>
                             <input type="text" name="writer" class="form-control"
-                                   value=<c:out value="${dto.writer}"></c:out> readonly>
+                                   value='<c:out value="${dto.writer}"></c:out>' readonly>
 
                         </div>
 

@@ -28,9 +28,9 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-link active" aria-current="page" href="#">test!</a>
-                                <a class="nav-link" href="/todo/register">write</a>
-                                <a class="nav-link" href="/todo/list">List</a>
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link" href="#">Features</a>
+                                <a class="nav-link" href="#">Pricing</a>
                                 <a class="nav-link disabled">Disabled</a>
                             </div>
                         </div>
@@ -72,6 +72,7 @@
             </div>
         </div>
 
+
         <div class="row content">
             <div class="col">
                 <div class="card">
@@ -91,11 +92,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${dtoList}" var="dto">
+                            <c:forEach items="${responseDTO.dtoList}" var="dto">
                                 <tr>
                                     <th scope="row"><c:out value="${dto.tno}"/></th>
                                     <td>
-                                        <a href="/todo/read?tno=${dto.tno}" class="text-decoration-none" data-tno="${dto.tno}" >
+                                        <a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}" class="text-decoration-none" data-tno="${dto.tno}" >
                                             <c:out value="${dto.title}"/>
                                         </a>
                                     </td>

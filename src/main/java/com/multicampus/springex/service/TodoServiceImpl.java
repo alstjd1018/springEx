@@ -1,6 +1,8 @@
 package com.multicampus.springex.service;
 
 import com.multicampus.springex.domain.TodoVO;
+import com.multicampus.springex.dto.PageRequestDTO;
+import com.multicampus.springex.dto.PageResponseDTO;
 import com.multicampus.springex.dto.TodoDTO;
 import com.multicampus.springex.mapper.TodoMapper;
 import lombok.RequiredArgsConstructor;
@@ -27,16 +29,32 @@ public class TodoServiceImpl implements TodoService{
         todoMapper.insert(todoVO);
     }
 
-
     @Override
-    public List<TodoDTO> getAll(){
-
-        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
+        List<TodoVO> voList = todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList = voList.stream()
                 .map(vo -> modelMapper.map(vo,TodoDTO.class))
                 .collect(Collectors.toList());
+        int total = todoMapper.getCount(pageRequestDTO);
 
-        return dtoList;
+        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+        return pageResponseDTO;
     }
+
+
+//    @Override
+//    public List<TodoDTO> getAll(){
+//
+//        List<TodoDTO> dtoList = todoMapper.selectAll().stream()
+//                .map(vo -> modelMapper.map(vo,TodoDTO.class))
+//                .collect(Collectors.toList());
+//
+//        return dtoList;
+//    }
 
     @Override
     public TodoDTO getOne(Long tno) {

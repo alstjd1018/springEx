@@ -62,9 +62,9 @@
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Writer</span>
+                            <span  class="input-group-text">Writer</span>
                             <input type="text" name="writer" class="form-control"
-                                   value=<c:out value="${dto.writer}"></c:out>>
+                                   value='<c:out value="${dto.writer}"></c:out>'readonly>
 
                         </div>
 
